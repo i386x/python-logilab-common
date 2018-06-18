@@ -1,0 +1,5 @@
+.pk-maint/log
+/upstream
+/downstream
+/specfiles/*
+!/specfiles/*-init/
