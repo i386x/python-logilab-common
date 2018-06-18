@@ -27,6 +27,9 @@ addfile sources : Maintfile
 addfile oldpkg : specfiles/${ProjectVars[PKG_NAME]}-init/.gitignore
 addfile inipkg oldpkg : specfiles/${ProjectVars[PKG_NAME]}-init/${ProjectVars[PKG_NAME]}.spec
 addfile inipkg oldpkg : specfiles/${ProjectVars[PKG_NAME]}-init/${ProjectVars[PKG_NAME]}-proper_PyColorize_import.patch
+addfile inipkg oldpkg : specfiles/${ProjectVars[PKG_NAME]}-init/${ProjectVars[PKG_NAME]}-do_not_depend_on_egenix_mx_base.patch
+addfile inipkg oldpkg : specfiles/${ProjectVars[PKG_NAME]}-init/${ProjectVars[PKG_NAME]}-do_not_depend_on_logilab_aspects.patch
+addfile inipkg oldpkg : specfiles/${ProjectVars[PKG_NAME]}-init/${ProjectVars[PKG_NAME]}-urllib2_compat.patch
 addfile oldpkg : specfiles/${ProjectVars[PKG_NAME]}-init/sources
 
 ###############################################################################

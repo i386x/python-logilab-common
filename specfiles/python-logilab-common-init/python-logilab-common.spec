@@ -37,6 +37,7 @@ Source0:        https://files.pythonhosted.org/packages/source/%{repo_0}/%{repo}
 Patch0:         %{pypkgname}-proper_PyColorize_import.patch
 Patch1:         %{pypkgname}-do_not_depend_on_egenix_mx_base.patch
 Patch2:         %{pypkgname}-do_not_depend_on_logilab_aspects.patch
+Patch3:         %{pypkgname}-urllib2_compat.patch
 
 BuildArch:      noarch
 
