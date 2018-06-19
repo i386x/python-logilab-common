@@ -30,6 +30,7 @@ addfile inipkg oldpkg : specfiles/${ProjectVars[PKG_NAME]}-init/${ProjectVars[PK
 addfile inipkg oldpkg : specfiles/${ProjectVars[PKG_NAME]}-init/${ProjectVars[PKG_NAME]}-do_not_depend_on_egenix_mx_base.patch
 addfile inipkg oldpkg : specfiles/${ProjectVars[PKG_NAME]}-init/${ProjectVars[PKG_NAME]}-do_not_depend_on_logilab_aspects.patch
 addfile inipkg oldpkg : specfiles/${ProjectVars[PKG_NAME]}-init/${ProjectVars[PKG_NAME]}-urllib2_compat.patch
+addfile inipkg oldpkg : specfiles/${ProjectVars[PKG_NAME]}-init/${ProjectVars[PKG_NAME]}-do_not_install_logilab-pytest.patch
 addfile oldpkg : specfiles/${ProjectVars[PKG_NAME]}-init/sources
 
 ###############################################################################

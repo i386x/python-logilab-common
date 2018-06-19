@@ -23,6 +23,15 @@
 This package contains several modules providing low level functionality shared\
 among some python projects developed by logilab.
 
+%global testscript '\
+import sys\
+import os\
+import warnings\
+warnings.simplefilter("default", DeprecationWarning)\
+sys.path.insert(0, os.getcwd())\
+from logilab.common.pytest import run\
+run()\
+'
 
 Name:           %{pypkgname}
 Version:        1.4.1
@@ -31,13 +40,14 @@ Summary:        %{sum}
 
 Group:          %{grp}
 
-License:        LGPLv2.1+
-URL:            http://www.logilab.org/projects/logilab-common
+License:        LGPLv2+
+URL:            https://www.logilab.org/project/logilab-common
 Source0:        https://files.pythonhosted.org/packages/source/%{repo_0}/%{repo}/%{repo}-%{version}.tar.gz
 Patch0:         %{pypkgname}-proper_PyColorize_import.patch
 Patch1:         %{pypkgname}-do_not_depend_on_egenix_mx_base.patch
 Patch2:         %{pypkgname}-do_not_depend_on_logilab_aspects.patch
 Patch3:         %{pypkgname}-urllib2_compat.patch
+Patch4:         %{pypkgname}-do_not_install_logilab-pytest.patch
 
 BuildArch:      noarch
 
@@ -103,7 +113,7 @@ Requires:       python%%{-V:%%{-V*}}%%{!-V:2}-kerberos\
 Recommends:     python%%{-V:%%{-V*}}%%{!-V:2}-ipython\
 # - occasionally imported by `logilab/common/pytest.py`\
 # - occasionally imported by `logilab/common/testlib.py`\
-Recommends:     python%%{-V:%%{-V*}}%%{!-V:2}-unittest2\
+Recommends:     python%%{-V:%%{-V*}}%%{!-V:2}-unittest2 >= 0.5.1\
 # - occasionally imported by `logilab/common/pytest.py`\
 Recommends:     python%%{-V:%%{-V*}}%%{!-V:2}-django\
 # - occasionally imported by `logilab/common/pytest.py`\
@@ -159,9 +169,23 @@ Group:          %{grp}
 
 
 %check
-%{__python2} setup.py test
+%{__python2} -c %{testscript}
 %if %{with python3}
-%{__python3} setup.py test
+%{__python3} -c %{testscript}
+%endif
+
+
+%files -n python2-%{repo}
+%license COPYING COPYING.LESSER
+%doc ChangeLog README
+%{python2_sitelib}/*
+
+
+%if %{with python3}
+%files -n python%{python3_pkgversion}-%{repo}
+%license COPYING COPYING.LESSER
+%doc ChangeLog README
+%{python3_sitelib}/*
 %endif
 
 
